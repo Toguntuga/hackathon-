@@ -5,23 +5,77 @@
 <head>  
   <meta charset="UTF-8">
   <title>Number Checker</title>
-  <!-- Added link to the jQuery Library -->
+  <!--link to jQuery  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Added a link to Bootstrap-->
+  <!--link to Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
   <!--this is the link to css file-->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+ <link rel="stylesheet" type="text/css" href="css/style.css"> 
+<!--google fonts link-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display&display=swap" rel="stylesheet">
+<style>.tech-font{font-family: 'Big Shoulders Stencil Display', cursive;}</style>
+<style>
+  body {
+      background: url(https://image.freepik.com/free-vector/green-cyber-future-technology-concept-background_42077-411.jpg);
+      background-repeat: no-repeat;
+    
+/* Jumbotron  */
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+}
+  
+  .container {
+       /* opacity: .7;*/
+        /*background-color: black;*/
+    }
+    .jumbotron {
+        opacity: .85;
+        background-color: black;
+    }
+    .jumbotronCopy{
+      
+        color: white;
+    }
+    .btn-light{
+
+        background-color: green;
+    }
+    .card-header{
+      color: white;
+      background-color: black;
+    }
+    .tech-font{
+      color: white;
+    }
+    /*.text-center{
+      color: black; 
+    
+    .card-bodytech-center{ 
+      color: white; 
+    }*/
+  
+    
+</style>
 </head>
 <body>
   <div class="jumbotron">
+    <div class="jumbotronCopy">
     <h1 class="text-center">Number Guesser</h1>
-    <h2 class="text-center">See if you can guess the number the computer is thinking of!</h2>
+   
+    <!-- <style>.tech-font{font-family: 'Big Shoulders Stencil Display', cursive;}</style> -->
+    <h2 class="text-center tech-font"> Can you guess the computer's number ?</h2>
+  </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="card mb-2">
-          <h3 class="card-header">Computer Pick</h3>
+          <h3 class="card-header">Computer's number</h3>
           <div class="card-body text-center">
             <h1 id="computer-pick">???</h1>
           </div>
@@ -31,19 +85,32 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card mb-2">
-          <h3 class="card-header">You Pick</h3>
+          <h3 class="card-header">Let's test you guess!</h3> 
           <div class="card-body text-center">
-            <button id="button-1" class="btn btn-danger btn-choice" value="1">
+            <button id="button-1" class="btn btn-light btn-choice" value="1">
               <h1>1</h1>
             </button>
-            <button id="button-2" class="btn btn-danger btn-choice" value="2">
+            <button id="button-2" class="btn btn-light btn-choice" value="2">
               <h1>2</h1>
             </button>
-            <button id="button-3" class="btn btn-danger btn-choice" value="3">
+            <button id="button-3" class="btn btn-light btn-choice" value="3">
               <h1>3</h1>
             </button>
-            <button id="button-4" class="btn btn-danger btn-choice" value="4">
-              <h1>4</h1>
+            <button id="button-4" class="btn btn-light btn-choice" value="4">
+            <h1>4</h1>
+              <button id="button-5" class="btn btn-light btn-choice" value="5">
+                <h1>5</h1>
+            <button id="button-6" class="btn btn-light btn-choice" value="6">
+            <h1>6</h1>
+            <button id="button-7" class="btn btn-light btn-choice" value="7">
+            <h1>7</h1>
+            <button id="button-8" class="btn btn-light btn-choice" value="8">
+            <h1>8</h1>
+           <button id="button-9" class="btn btn-light btn-choice" value="9">
+           <h1>9</h1>
+           <button id="button-10" class="btn btn-light btn-choice" value="10">
+            <h1>10</h1>
+            
             </button>
           </div>
         </div>
@@ -52,10 +119,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card mb-2">
-          <h3 class="card-header">Result</h3>
-          <div class="card-body text-center">
-            <h1 id="result"></h1>
-          </div>
+
+            <div id="result"></div>
+      
         </div>
       </div>
     </div>
@@ -64,7 +130,7 @@
 
     $(document).ready(function() {
       //first varibles 
-      var computerPick = Math.floor(Math.random() * 4) + 1;
+      var computerPick = Math.floor(Math.random() * 10) + 1;
       var lockGame = false;
       
   
@@ -80,16 +146,22 @@
           console.log("Your Pick: " + yourPick);
           
 
-          $("#computer-pick").text(computerPick);
+          $("#computer-pick").text(computerPick); 
           
-
+          var newDiv= document.createElement("div");
+    
           if (parseInt(yourPick) === computerPick) {
-            $("#result").text("Yep! You got it! Refresh the page to play again.");
+            console.log("here");
+            //$("#result").html//
+            newDiv.innerHTML="<img src='https://www.memesmonkey.com/images/memesmonkey/0f/0f59eba0305c13a033b1cff4328bd535.jpeg' width='400px' height='150px'>"; 
+            $("#result").append(newDiv);
             lockGame = true;
           }
           
           else {
-            $("#result").text("Nope. Refresh the page to play again.");
+            //$("#result").text("Nope. Refresh the page to play again.");//
+            newDiv.innerHTML="<img src='https://lh5.googleusercontent.com/proxy/iy_3VL-FHf-zELMoNpAgyibNNOTMMw8GgDxYfDv2g6ZOk0Sa6Z9WZc7iyLxUcWRMqIL2uI75isL3npnF-iDOkWk5HfIfP46x4e_T-PK9-nC3AWu8-FJC4HPEXUYNIYWYcaPnAbluzX5tkOwqo3dZ5bqzY3EYWspTJCu3T2DFfV-JUuI=s0-d'>"; 
+            $("#result").append(newDiv);
             lockGame = true;
           }
         }
